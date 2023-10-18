@@ -5,7 +5,7 @@ const fs = require('fs')
 // 使用request模拟发送请求，获取响应数据。
 const data = [];
 console.log('百度模块')
-const write = require('./tool.js')
+const write = require('../tool.js')
 
 // 获取百度信息
 const getBaiduHot = function(url) {
@@ -16,7 +16,7 @@ const getBaiduHot = function(url) {
             const $ = cheerio.load(body);
 
             // 存储获取到的数据
-            const totalData = []
+            let totalData = []
 
             // 获取content_1YWBm下全部的a元素
             await $('.category-wrap_iQLoo').each(function(index, value) {

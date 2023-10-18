@@ -1,4 +1,6 @@
 # 开发日志
+> 前期的开发步骤。
+
 ## 爬虫书写步骤
 > 执行以下命令，创建文件夹和安装依赖
 ```sh
@@ -130,4 +132,18 @@ app.use(router.routes())
 app.listen(port, ()=>{
     console.log('服务器启动在', `http://localhost:${3000}/`)
 })
+```
+
+## 服务器跨域和路由中间件
+```js
+// 匹配其他所有路由
+app.use(async (ctx, next) => {
+  data = require('./data/baiduhot.json')
+  ctx.body = data
+  await next();
+});
+
+
+// 使用跨域中间件
+app.use(cors())
 ```

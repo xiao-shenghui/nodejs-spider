@@ -7,6 +7,8 @@ cacheKeys.forEach((key) => {
 // 引入对应的模块
 const getBaiduHot = require('./module/baidu.js');
 const getDouYinHot = require('./module/douyin.js');
+const fenci = require('./module/fenci.js');
+
 
 // 对应的url
 const urlbaidu = 'https://top.baidu.com/board?tab=realtime&sa=fyb_realtime_31065';
@@ -16,5 +18,6 @@ const urldouyin = 'https://www.iesdouyin.com/web/api/v2/hotsearch/billboard/word
 async function main(){
   await getBaiduHot(urlbaidu);
   await getDouYinHot(urldouyin);
+  await fenci();
 }
 main();

@@ -1,6 +1,7 @@
 // 用koa, 一律用get接口
 const Koa = require('koa');
 const Router = require('@koa/router');
+const cors = require('@koa/cors');
 
 const app = new Koa();
 const router = new Router();
@@ -17,8 +18,26 @@ router.get('/douyin', ctx => {
 	ctx.body = data
 })
 
+router.get('/fenci', ctx => { 
+	data = require('./data/fenci.json')
+	ctx.body = data
+})
+
+app.use(async (ctx, next) => {
+  // 匹配其他所有路由
+  data = require('./data/baiduhot.json')
+  ctx.body = data
+  await next();
+});
+
+
+// 使用跨域中间件
+app.use(cors())
 // 注册路由
 app.use(router.routes())
+
+
+
 
 // 监听
 app.listen(port, ()=>{
